@@ -36,19 +36,3 @@ http://localhost:4000/api/v1/saldo/:id
 http://localhost:4000/api/v1/saldo/:id
 ```
 
-- Method: POST | Create Transaksi
-```
-http://localhost:4000/api/v1/transaksi
-```
-- Method: GET | Read Transaksi
-```
-http://localhost:4000/api/v1/transaksi
-```
-- Method: PUT | Update Transaksi
-```
-http://localhost:4000/api/v1/transaksi/:id
-```
-- Method: DELETE | Delete Transaksi
-```
-http://localhost:4000/api/v1/transaksi/:id
-```
