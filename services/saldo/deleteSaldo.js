@@ -2,12 +2,15 @@ const models = require('../../models');
 
 const deleteSaldo = async (req, res) => {
     try {
-        await models.Saldo.destroy({
+        let data = await models.Saldo.destroy({
             where: {
                 id: req.params.id
             }
-        })
-        res.jsend.success({})
+        });
+
+        data === 0 ?
+            res.jsend.error(`Saldo data tidak ditemukan!`) :
+            res.jsend.success({})
     } catch (error) {
         res.jsend.error(error)
     }

@@ -17,7 +17,8 @@ module.exports = {
                         tableName: 'm_saldo',
                         key: 'id'
                     }
-                }
+                },
+                onDelete: "CASCADE"
             },
             nominal: {
                 allowNull: false,

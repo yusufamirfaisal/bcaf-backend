@@ -5,7 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class Transaksi extends Model {
         static associate(models) {
-            this.addScope('defaultScope',{
+            this.belongsTo(models.Saldo, { foreignKey: 'saldo_id', targetKey: 'id', onDelete: 'cascade' });
+
+            this.addScope('defaultScope', {
                 order: [
                     ['tanggal', 'DESC']
                 ]
@@ -27,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
                     tableName: 'm_saldo',
                     key: 'id'
                 }
-            }
+            },
+            onDelete: "CASCADE"
         },
         nominal: {
             allowNull: false,

@@ -6,8 +6,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class Saldo extends Model {
         static associate(models) {
-            this.hasMany(models.Transaksi, { foreignKey: 'saldo_id', sourceKey: 'id' });
-        
+            this.hasMany(models.Transaksi, { foreignKey: 'saldo_id', sourceKey: 'id', onDelete: "cascade", hooks: true,  });
+
             this.addScope('withDetails', {
                 include: [{
                     required: false,
@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
                 }]
             })
         }
-        
+
     }
-    
+
     Saldo.init({
         id: {
             allowNull: false,

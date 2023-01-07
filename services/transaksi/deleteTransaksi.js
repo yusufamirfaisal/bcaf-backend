@@ -7,21 +7,20 @@ const deleteTransaksi = async (req, res) => {
         transaction = await sequelize.transaction();
 
         const getTransaksiById = await models.Transaksi.findByPk(req.params.id, { transaction });
-        const checkExistingSaldo = await models.Saldo.findByPk(req.body.saldo_id, { transaction });
+        const checkExistingSaldo = await models.Saldo.findByPk(getTransaksiById.saldo_id, { transaction });
 
         let oldSaldo;
         if (getTransaksiById.jenis == 'Kredit') {
             oldSaldo = checkExistingSaldo.saldo - getTransaksiById.nominal
-        } else if (getTransaksiById.jenis == 'Debit') {
+        } else if (getTransaksiById.jenis == 'Debet') {
             oldSaldo = checkExistingSaldo.saldo + getTransaksiById.nominal
         }
 
-
         await models.Saldo.update({
-            saldo: newSaldo
+            saldo: oldSaldo
         }, {
             where: {
-                id: req.body.saldo_id
+                id: checkExistingSaldo.id
             }
         }, { transaction });
 
