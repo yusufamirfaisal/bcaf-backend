@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
             this.belongsTo(models.Saldo, { foreignKey: 'saldo_id', targetKey: 'id', onDelete: 'cascade' });
 
             this.addScope('defaultScope', {
+                include: [{
+                    required: true,
+                    model: models.Saldo
+                }],
                 order: [
                     ['tanggal', 'DESC']
                 ]

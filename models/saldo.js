@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             this.hasMany(models.Transaksi, { foreignKey: 'saldo_id', sourceKey: 'id', onDelete: "cascade", hooks: true,  });
 
-            this.addScope('withDetails', {
+            this.addScope('defaultScope', {
                 include: [{
                     required: false,
                     model: models.Transaksi

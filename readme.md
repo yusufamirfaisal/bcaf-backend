@@ -1,4 +1,12 @@
 ## CODING TES BCA FINANCE
+
+## Getting Started
+### Tools
+- [MySQL](https://www.mysql.com/)
+- [Node.js®](https://nodejs.org/en/)
+- [Postman](https://www.postman.com/)
+
+### Install
 - Setup Database password at config/config.json
 - Create Database
 ```
@@ -13,16 +21,13 @@ npx run db-migrate
 npm start
 ```
 
-### Tools
-- NodeJs
-- ExpressJs
-- MySQL
-
 ## API ROUTES
+### Saldo
 - Method: POST | Create Saldo
 ```
 http://localhost:4000/api/v1/saldo
 ```
+example JSON: { name: "Faisal" }
 - Method: GET | Read Saldo
 ```
 http://localhost:4000/api/v1/saldo
@@ -35,7 +40,12 @@ http://localhost:4000/api/v1/saldo/:id
 ```
 http://localhost:4000/api/v1/saldo/:id
 ```
+### Transaksi
 - Method: POST | Create Transaksi
+```
+http://localhost:4000/api/v1/transaksi
+```
+- Method: GET | Read Transaksi
 ```
 http://localhost:4000/api/v1/transaksi
 ```
