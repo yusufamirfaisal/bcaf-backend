@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const jsend = require('jsend')
-const cors = require('cors')
+const jsend = require('jsend');
+const cors = require('cors');
 
 const port = process.env.PORT || 4000;
 const corsOptions = {
