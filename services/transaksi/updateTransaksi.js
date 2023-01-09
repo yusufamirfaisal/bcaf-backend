@@ -7,13 +7,11 @@ const updateTransaksi = async (req, res) => {
         transaction = await sequelize.transaction();
 
         const getTransaksiById = await models.Transaksi.findByPk(req.params.id, { transaction });
+
         if (!getTransaksiById)
             throw new Error(`Data transaksi tidak ditemukan!`)
-
-        if (getTransaksiById.saldo_id !== req.body.saldo_id)
-            throw new Error(`Tidak dapat mengganti saldo_id!`)
-
-        const checkExistingSaldo = await models.Saldo.findByPk(req.body.saldo_id, { transaction });
+        
+        const checkExistingSaldo = await models.Saldo.findByPk(getTransaksiById.saldo_id, { transaction });
 
         let oldSaldo;
         if (getTransaksiById.jenis == 'Kredit') {
@@ -39,12 +37,11 @@ const updateTransaksi = async (req, res) => {
             saldo: newSaldo
         }, {
             where: {
-                id: req.body.saldo_id
+                id: getTransaksiById.saldo_id
             }
         }, { transaction });
 
-        let data = await models.Transaksi.update({
-            saldo_id: req.body.saldo_id,
+        await models.Transaksi.update({
             nominal: nominal,
             jenis: jenisTransaksi,
             tanggal: req.body.tanggal
