@@ -9,7 +9,14 @@
         "db-create": "npx sequelize-cli db:create",
         "db-migrate": "npx sequelize-cli db:migrate"
     },
-    "author": "Yusuf Amir Faisal",
+    "author": {
+        "name": "Yusuf Amir Faisal",
+        "email": "yusufamirfaisal01@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yusufamirfaisal/bca-finance-coding-test.git"
+    },
     "license": "MIT",
     "dependencies": {
         "body-parser": "^1.20.1",
