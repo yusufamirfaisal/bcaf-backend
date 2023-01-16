@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             this.belongsTo(models.Saldo, { foreignKey: 'saldo_id', targetKey: 'id', onDelete: 'cascade' });
 
-            this.addScope('defaultScope', {
+            this.addScope('withDetails', {
                 include: [{
                     required: true,
                     model: models.Saldo

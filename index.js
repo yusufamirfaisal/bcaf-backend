@@ -1,17 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jsend = require('jsend');
-const cors = require('cors');
 
 const port = process.env.PORT || 4000;
-const corsOptions = {
-    origin: "http://localhost:3000",
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}
 
 const app = express();
 
-app.use(cors(corsOptions))
 app.use(jsend.middleware)
 app.use('/', (req, res, next) => {
     res.locals.user = "admin"
@@ -22,4 +16,4 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api', require('./controllers'))
 
 
-app.listen(port, () => console.log(`Technical test listening on port ${port}!`));
+app.listen(port, () => console.log(`TECHNICAL TEST BCA FINANCE listening on port ${port}!`));
