@@ -13,7 +13,7 @@ app.use('/', (req, res, next) => {
 })
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use('/api', require('./controllers'))
+app.use('/api', require('./api'))
 
 
 app.listen(port, () => console.log(`TECHNICAL TEST BCA FINANCE listening on port ${port}!`));

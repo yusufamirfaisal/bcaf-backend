@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "tescoding",
+    "database": "bca_finance",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {

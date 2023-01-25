@@ -2,18 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('m_saldo', {
+        await queryInterface.createTable('m_users', {
             id: {
                 allowNull: false,
                 primaryKey: true,
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4
             },
-            nama: {
+            name: {
                 allowNull: false,
                 type: Sequelize.STRING
             },
-            saldo: {
+            balance: {
                 allowNull: false,
                 type: Sequelize.INTEGER,
                 defaultValue: 0
@@ -29,6 +29,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('m_saldo');
+        await queryInterface.dropTable('m_users');
     }
 };

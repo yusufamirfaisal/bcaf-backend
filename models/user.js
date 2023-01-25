@@ -4,39 +4,31 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Saldo extends Model {
+    class User extends Model {
         static associate(models) {
-            this.hasMany(models.Transaksi, { foreignKey: 'saldo_id', sourceKey: 'id', onDelete: "cascade", hooks: true,  });
-
-            this.addScope('withDetails', {
-                include: [{
-                    required: false,
-                    model: models.Transaksi
-                }]
-            })
+   
         }
-
     }
 
-    Saldo.init({
+    User.init({
         id: {
             allowNull: false,
             primaryKey: true,
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4
         },
-        nama: {
+        name: {
             allowNull: false,
             type: Sequelize.STRING
         },
-        saldo: {
+        balance: {
             allowNull: false,
             type: Sequelize.INTEGER,
             defaultValue: 0
         }
     }, {
         sequelize,
-        tableName: 'm_saldo',
+        tableName: 'm_users',
     });
-    return Saldo;
+    return User;
 };

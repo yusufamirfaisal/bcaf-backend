@@ -3,55 +3,44 @@ const {
     Model, Sequelize
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Transaksi extends Model {
+    class Transaction extends Model {
         static associate(models) {
-            this.belongsTo(models.Saldo, { foreignKey: 'saldo_id', targetKey: 'id', onDelete: 'cascade' });
-
-            this.addScope('withDetails', {
-                include: [{
-                    required: true,
-                    model: models.Saldo
-                }],
-                order: [
-                    ['tanggal', 'DESC']
-                ]
-            })
+    
         }
     }
-    Transaksi.init({
+    Transaction.init({
         id: {
             allowNull: false,
             primaryKey: true,
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4
         },
-        saldo_id: {
+        user: {
             allowNull: false,
             type: Sequelize.UUID,
             references: {
                 model: {
-                    tableName: 'm_saldo',
+                    tableName: 'm_users',
                     key: 'id'
                 }
             },
             onDelete: "CASCADE"
         },
-        nominal: {
+        amount: {
             allowNull: false,
             type: Sequelize.INTEGER
         },
-        jenis: {
+        type: {
             allowNull: false,
-            type: Sequelize.ENUM("Debet", "Kredit")
+            type: Sequelize.ENUM("Debit", "Credit")
         },
-        tanggal: {
+        date: {
             allowNull: false,
             type: Sequelize.DATE
         }
-
     }, {
         sequelize,
-        tableName: 't_transaksi',
+        tableName: 't_transactions',
     });
-    return Transaksi;
+    return Transaction;
 };
