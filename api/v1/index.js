@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.use('/saldo', require('./saldo'));
-router.use('/transaksi', require('./transaksi'))
+router.use('/users', require('./users'));
+router.use('/transactions', require('./transactions'))
 
 module.exports = router;
