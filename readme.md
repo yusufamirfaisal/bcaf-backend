@@ -55,7 +55,7 @@ http://localhost:4000/api/v1/users
 ```
 - Method: PUT | Update User
 ```
-http://localhost:4000/api/v1/saldo/:id
+http://localhost:4000/api/v1/users/:id
 ```
 - Example Input Update User
 ```JSON
@@ -63,9 +63,9 @@ http://localhost:4000/api/v1/saldo/:id
     "name": "Foo Bar"
 }
  ```
-- Method: DELETE | Delete Saldo
+- Method: DELETE | Delete User
 ```
-http://localhost:4000/api/v1/saldo/:id
+http://localhost:4000/api/v1/users/:id
 ```
 ### Transaksi
 - Method: POST | Create Transaksi

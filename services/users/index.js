@@ -3,5 +3,5 @@ module.exports = {
     destroy: require('./destroy'),
     findAll: require('./findAll'),
     findByPk: require('./findByPk'),
-    update: require('./findByPk')
+    update: require('./update')
 }

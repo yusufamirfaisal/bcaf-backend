@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class Transaction extends Model {
         static associate(models) {
-    
+            this.belongsTo(models.User, { foreignKey: 'user', targetKey: 'id' })
         }
     }
     Transaction.init({

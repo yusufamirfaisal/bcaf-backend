@@ -2,11 +2,12 @@ const models = require('../../models');
 
 const destroy = async (req, res) => {
     try {
-        let data = await models.User.destroy({
+        await models.User.destroy({
             where: {
                 id: req.params.id
             }
         });
+        res.jsend.success({})
     } catch (error) {
         res.jsend.error(error)
     }

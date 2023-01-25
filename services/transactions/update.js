@@ -6,12 +6,27 @@ const update = async (req, res) => {
     try {
         transaction = await sequelize.transaction();
 
+        const type = req.body.type;
+        const amount = req.body.amount;
+
         const getTransaction = await models.Transaction.findByPk(req.params.id, { transaction });
 
         if (!getTransaction)
             throw new Error(`Transaction not found!`)
-        
+
         const getUser = await models.User.findByPk(getTransaction.user, { transaction });
+
+        const firstTransaction = await models.Transaction.findOne({
+            where: {
+                user: getUser.id
+            },
+            order: [
+                ['createdAt', 'ASC']
+            ]
+        }, { transaction });
+
+        if (firstTransaction && firstTransaction.id == req.params.id && firstTransaction.type !== type)
+            throw new Error(`First transaction must be Credit!`)
 
         let oldBalance;
         if (getTransaction.type == 'Credit') {
@@ -19,9 +34,6 @@ const update = async (req, res) => {
         } else if (getTransaction.type == 'Debit') {
             oldBalance = getUser.balance + getTransaction.amount
         }
-
-        const type = req.body.type;
-        const amount = req.body.amount;
 
         let newBalance;
         if (type == 'Credit') {

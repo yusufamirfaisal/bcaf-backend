@@ -12,7 +12,7 @@ const create = async (req, res) => {
         const amount = req.body.amount;
 
         let balance;
-        if (jenisTransaksi == "Credit") {
+        if (type == "Credit") {
             balance = getUser.balance + amount;
         } else if (type == "Debit") {
             balance = getUser.balance - amount;
@@ -32,7 +32,7 @@ const create = async (req, res) => {
         await models.Transaction.create({
             user: getUser.id,
             type: type,
-            amout: amount,
+            amount: amount,
             date: req.body.date
         }, { transaction });
 
