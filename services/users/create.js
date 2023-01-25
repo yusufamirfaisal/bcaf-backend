@@ -3,7 +3,7 @@ const models = require('../../models');
 const create = async (req, res) => {
     try {
         await models.User.create({
-            nama: req.body.name
+            name: req.body.name
         });
         res.jsend.success({})
     } catch (error) {

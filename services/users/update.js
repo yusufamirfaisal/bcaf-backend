@@ -2,17 +2,14 @@ const models = require('../../models');
 
 const update = async (req, res) => {
     try {
-        let data = await models.User.update({
-            nama: req.body.nama
+        await models.User.update({
+            name: req.body.name
         }, {
             where: {
                 id: req.params.id
             }
         })
-
-        data[0] === 0 ?
-            res.jsend.error(`Data saldo tidak ditemukan!`) :
-            res.jsend.success({})
+        res.jsend.success({})
     } catch (error) {
         res.jsend.error(error)
     }

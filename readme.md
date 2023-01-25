@@ -24,43 +24,43 @@ npm start
 ## API ROUTES
 - [Postman Collection](https://api.postman.com/collections/15112453-094020ed-edf8-4f3f-b258-6cc46a9d81bd?access_key=PMAT-01GPBGGRJP4WMV7QPKKVJE4HWY)
 ### Saldo
-- Method: POST | Create Saldo
+- Method: POST | Create User
 ```
-http://localhost:4000/api/v1/saldo
+http://localhost:4000/api/v1/users
 ```
 - Example Input Create Saldo
 ```JSON
 {
-    "nama": "Faisal"
+    "name": "John Doe"
 }
  ```
-- Method: GET | Read Saldo
+- Method: GET | Find All Users
 ```
-http://localhost:4000/api/v1/saldo
+http://localhost:4000/api/v1/users
 ```
-- Example Output Read Saldo
+- Example Output Find All Users
 ```JSON
 {
     "status": "success",
     "data": [
         {
-            "id": "c5a31208-146a-4756-a289-61131c915eb4",
-            "nama": "Faisal",
-            "saldo": 0,
-            "createdAt": "2023-01-09 21:40:50",
-            "updatedAt": "2023-01-09 21:40:50"
+            "id": "370e4de1-4018-4e78-8744-1b0f6315c03d",
+            "name": "John Doe",
+            "balance": 0,
+            "createdAt": "2023-01-26 02:17:40",
+            "updatedAt": "2023-01-26 02:17:40"
         }
     ]
 }
 ```
-- Method: PUT | Update Saldo
+- Method: PUT | Update User
 ```
 http://localhost:4000/api/v1/saldo/:id
 ```
-- Example Input Update Saldo
+- Example Input Update User
 ```JSON
 {
-    "nama": "Yusuf"
+    "name": "Foo Bar"
 }
  ```
 - Method: DELETE | Delete Saldo
