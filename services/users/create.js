@@ -1,9 +1,9 @@
 const models = require('../../models');
 
-const createSaldo = async (req, res) => {
+const create = async (req, res) => {
     try {
-        await models.Saldo.create({
-            nama: req.body.nama
+        await models.User.create({
+            nama: req.body.name
         });
         res.jsend.success({})
     } catch (error) {
@@ -11,4 +11,4 @@ const createSaldo = async (req, res) => {
     }
 }
 
-module.exports = createSaldo;
+module.exports = create;

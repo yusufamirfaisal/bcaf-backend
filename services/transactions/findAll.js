@@ -1,12 +1,12 @@
 const models = require('../../models');
 
-const getSaldo = async (req, res) => {
+const findAll = async (req, res) => {
     try {
-        let data = await models.Saldo.findAll();
+        let data = await models.Transaction.findAll();
         res.jsend.success(data);
     } catch (error) {
         res.jsend.error(error)
     }
 }
 
-module.exports = getSaldo;
+module.exports = findAll;

@@ -1,8 +1,8 @@
 const models = require('../../models');
 
-const updateSaldo = async (req, res) => {
+const update = async (req, res) => {
     try {
-        let data = await models.Saldo.update({
+        let data = await models.User.update({
             nama: req.body.nama
         }, {
             where: {
@@ -18,4 +18,4 @@ const updateSaldo = async (req, res) => {
     }
 }
 
-module.exports = updateSaldo;
+module.exports = update;
